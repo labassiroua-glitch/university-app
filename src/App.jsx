@@ -80,4 +80,36 @@ function App() {
   );
 }
 
+const [etudiants,setEtudiants] = useState(etudiants);
+
+function Ajouter() {
+  const nouvelEtudiant={ 
+    nom="Makchaha",
+    prenom="Majd",
+    Email="majd.makchaha@gmail.com",
+    Tel="+216 22 113 344",
+    filier="Génie logiciel et système d'information",
+    annee="21 ans", 
+    groupe="GLSI 2A",
+    ville="Mahdia",
+    img=levi
+  };
+  setEtudiants([...etudiants, nouvelEtudiant]);
+  <button onClick={Ajouter}>Ajouter un étudiant</button>
+
+
+function basculercoordonnées  () {
+  setVisibilité(!visibilité);
+  }
+  <button onClick={basculercoordonnées}>Afficher/Masquer
+    {coordonnéesVisible ? 'Masquer coordonnées' : 'Afficher coordonnées'}
+  </button>
+  {coordonnéesVisible && (
+    <div>
+      <p>Email: {etudiant.Email}</p>
+      <p>Téléphone: {etudiant.Tel}</p>
+    </div>
+  )
+  }
+
 export default App;
