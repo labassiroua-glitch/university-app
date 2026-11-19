@@ -80,7 +80,6 @@ function App() {
     }
   }
 
-  // 5. Filtrer les étudiants selon le texte saisi dans la recherche
   const etudiantsFiltres = etudiants.filter((etudiant) => {
     const terme = recherche.toLowerCase();
     return (
