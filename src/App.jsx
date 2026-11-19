@@ -1,9 +1,10 @@
 import { useState } from "react";
-import './App.css';
-import StudentCard from './components/StudentCard.jsx';
-import rou from './assets/7fayedh.jpeg';
-import levi from './assets/levi.jpg';
-import kakashi from './assets/kakashi.jpg';
+import "./App.css";
+import StudentCard from "./components/StudentCard.jsx";
+import StudentForm from "./components/StudentForm.jsx";
+import rou from "./assets/7fayedh.jpeg";
+import levi from "./assets/levi.jpg";
+import kakashi from "./assets/kakashi.jpg";
 
 function App() {
   // 1. Initialisation de la liste avec un id unique pour chaque étudiant
@@ -15,10 +16,10 @@ function App() {
       Email: "Labassiroua@gmail.com",
       Tel: "94625418",
       filier: "Génie logiciel et système d'information",
-      annee: "20 ans", 
+      annee: "20 ans",
       groupe: "GLSI 2A",
       ville: "Djerba",
-      img: rou
+      img: rou,
     },
     {
       id: 2,
@@ -27,10 +28,10 @@ function App() {
       Email: "levi.ackerman@gmail.com",
       Tel: "+216 22 113 344",
       filier: "Génie logiciel et système d'information",
-      annee: "21 ans", 
+      annee: "21 ans",
       groupe: "GLSI 2A",
       ville: "Mahdia",
-      img: levi
+      img: levi,
     },
     {
       id: 3,
@@ -39,34 +40,27 @@ function App() {
       Email: "kakashi.hatake@gmail.com",
       Tel: "+216 55 667 788",
       filier: "Génie logiciel et système d'information",
-      annee: "22 ans", 
+      annee: "22 ans",
       groupe: "GLSI 2B",
       ville: "Mahdia",
-      img: kakashi
-    }
+      img: kakashi,
+    },
   ]);
 
   // État pour la barre de recherche / filtrage
   const [recherche, setRecherche] = useState("");
 
-  // 2. Fonction Ajouter un étudiant (spread operator ...)
-  function ajouterEtudiant() {
-    const nouvelEtudiant = {
-      id: Date.now(), // ID unique
-      nom: "Makchaha",
-      prenom: "Majd",
-      Email: "majd.makchaha@gmail.com",
-      Tel: "+216 22 113 344",
-      filier: "Génie logiciel et système d'information",
-      annee: "21 ans", 
-      groupe: "GLSI 2A",
-      ville: "Mahdia",
-      img: levi
+  // 2. Fonction Ajouter un étudiant depuis StudentForm
+  function ajouterEtudiant(nouvelEtudiant) {
+    const etudiantAvecId = {
+      ...nouvelEtudiant,
+      img: nouvelEtudiant.img || rou,
+      id: Date.now(),
     };
-    setEtudiants([...etudiants, nouvelEtudiant]);
+    setEtudiants((anciensEtudiants) => [...anciensEtudiants, etudiantAvecId]);
   }
 
-  
+  // 3. Fonction Supprimer un étudiant
   function supprimerEtudiant(id) {
     const nouvelleListe = etudiants.filter((etudiant) => etudiant.id !== id);
     setEtudiants(nouvelleListe);
@@ -111,18 +105,23 @@ function App() {
         <a href="#contact">Contact</a>
       </nav>
 
-      {/* Actions : Barre de recherche et Bouton d'ajout */}
+      {/* Formulaire d'ajout d'étudiant */}
+      <StudentForm onAjouterEtudiant={ajouterEtudiant} />
+
+      {/* Actions : Barre de recherche */}
       <div className="actions" style={{ textAlign: "center", margin: "20px 0" }}>
         <input
           type="text"
           placeholder="Rechercher par nom, prénom ou filière..."
           value={recherche}
           onChange={(e) => setRecherche(e.target.value)}
-          style={{ padding: "8px 12px", width: "300px", marginRight: "10px", borderRadius: "5px", border: "1px solid #ccc" }}
+          style={{
+            padding: "8px 12px",
+            width: "300px",
+            borderRadius: "5px",
+            border: "1px solid #ccc",
+          }}
         />
-        <button onClick={ajouterEtudiant} style={{ padding: "8px 15px", backgroundColor: "#2563eb", color: "white", border: "none", borderRadius: "5px", cursor: "pointer" }}>
-          Ajouter un étudiant
-        </button>
       </div>
 
       {/* Grille des cartes d'étudiants */}

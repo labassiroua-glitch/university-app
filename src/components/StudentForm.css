@@ -1,0 +1,83 @@
+.student-form {
+  max-width: 600px;
+  width: 100%;
+  margin: 24px auto;
+  padding: 25px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  box-sizing: border-box;
+}
+
+.form-title {
+  text-align: center;
+  color: #333333;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  text-align: center;
+  color: #7f1d1d;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 15px;
+  color: #333333;
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  box-sizing: border-box;
+  line-height: 1.5;
+}
+
+.form-group select {
+  background-color: #e5e7eb;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #2563eb;
+  background-color: #ffffff;
+}
+
+.form-group input[type="file"] {
+  padding: 8px;
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
+.btn-submit {
+  align-self: center;
+  margin-top: 8px;
+  padding: 10px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333333;
+  background-color: #f3e8d2;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-submit:hover {
+  background-color: #2563eb;
+  color: #ffffff;
+}
