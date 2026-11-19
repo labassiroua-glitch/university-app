@@ -1,12 +1,14 @@
 import { useState } from 'react';
 
 function StudentCard(props) {
+  // État local pour afficher ou masquer les coordonnées de chaque étudiant indépendamment
   const [coordonneesVisible, setCoordonneesVisible] = useState(false);
 
   function basculerCoordonnees() {
     setCoordonneesVisible(!coordonneesVisible);
   }
 
+  // Valeur par défaut si la ville n'est pas renseignée (TP2)
   const ville = props.ville || "Non renseignée";
 
   return (
@@ -49,6 +51,7 @@ function StudentCard(props) {
         <strong>Ville :</strong> {ville}
       </p>
 
+      {/* Boutons d'actions requis pour le TP 3 */}
       <div className="card-actions" style={{ display: "flex", flexDirection: "column", gap: "8px", marginTop: "15px" }}>
         {/* Bouton Afficher / Masquer */}
         <button 
@@ -58,6 +61,7 @@ function StudentCard(props) {
           {coordonneesVisible ? 'Masquer les coordonnées' : 'Afficher les coordonnées'}
         </button>
 
+        {/* Bouton Contacter (TP1) */}
         <a 
           href={`mailto:${props.Email}`} 
           style={{ textAlign: "center", padding: "8px", background: "#0d9488", color: "#fff", textDecoration: "none", borderRadius: "5px" }}
@@ -65,7 +69,7 @@ function StudentCard(props) {
           Contacter
         </a>
 
-        {/* Boutons Modifier et Supprimer  */}
+        {/* Boutons Modifier et Supprimer (TP3) */}
         <div style={{ display: "flex", gap: "8px" }}>
           <button 
             onClick={() => props.onModifier(props.id)} 
